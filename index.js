@@ -3,7 +3,7 @@ const app = express()
 const port = 3000
 
 app.use(express.json())
-let global_database = { pets: {0: {name: "joey"}} }
+let global_database = { pets: {} }
 
 app.get('/', (req, res) => {
   console.log("GET /")
@@ -26,7 +26,7 @@ app.post('/pet', (req, res) => {
 
 app.get('/pet/findByStatus', (req, res) => {
   console.log(req.body)
-  let status = req.params.status
+  let status = req.query.status
   let matching_pets = []
   for (let pet_id in global_database.pets) {
     let pet = global_database.pets[pet_id]
@@ -39,7 +39,7 @@ app.get('/pet/findByStatus', (req, res) => {
 
 app.get('/pet/findByTags', (req, res) => {
   console.log(req.body)
-  let tags = req.params.tags
+  let tags = req.query.tags
   console.log("TAGS", tags)
   let matching_pets = []
   for (let pet_id in global_database.pets) {
