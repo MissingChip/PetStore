@@ -13,8 +13,11 @@ app.get('/', (req, res) => {
 app.put('/pet', (req, res) => {
   console.log(req.body)
   let new_pet = req.body
-  global_database.pets[new_pet.id] = new_pet
-  res.send(new_pet)
+  if(new_pet.id in global_database.pets) {
+    global_database.pets[new_pet.id] = new_pet
+    res.send(new_pet)
+  }
+  res.status(404).send("Pet not found")
 })
 
 app.post('/pet', (req, res) => {
