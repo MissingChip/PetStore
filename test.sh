@@ -1,3 +1,6 @@
+
+printf "test POST /pet\n"
+
 curl -X 'POST' 'localhost:3000/pet' -H 'accept: application/xml' -H 'Content-Type: application/json' -d '{
   "id": 10,
   "name": "fido",
@@ -14,18 +17,18 @@ curl -X 'POST' 'localhost:3000/pet' -H 'accept: application/xml' -H 'Content-Typ
   "status": "available"
 }'
 
-echo \n   test findByStatus
+printf "\n\n   test findByStatus\n"
 
 curl -X 'GET' 'localhost:3000/pet/findByStatus?status=available'
 
-echo \n   test findByTags
+printf "\n\n   test findByTags\n"
 
 curl -X 'GET' 'localhost:3000/pet/findByTags?tags=randomtag&tags=active'
 
-echo \n   test POST pet/{id}
+printf "\n\n   test POST pet/{id}\n"
 
 curl -X 'POST' 'localhost:3000/pet/10?name=joseph&status=inactive'
 
-echo \n   test GET pet/{id}
+printf "\n\n   test GET pet/{id}\n"
 
 curl -X 'GET' 'localhost:3000/pet/10'
