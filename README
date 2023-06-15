@@ -8,3 +8,13 @@ node index.js
 # Run a few requests
 bash test.sh
 ```
+
+Supported methods:
+```
+PUT /pet
+POST /pet
+GET /pet/findByStatus
+GET /pet/findByTags
+GET /pet/{id}
+DELETE /pet{id}
+```
