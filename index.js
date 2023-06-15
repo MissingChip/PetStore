@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
 })
 
 app.put('/pet', (req, res) => {
-  console.log(req.body)
+  console.log("PUT /pet", req.body)
   let new_pet = req.body
   if(new_pet.id in global_database.pets) {
     global_database.pets[new_pet.id] = new_pet
@@ -21,14 +21,14 @@ app.put('/pet', (req, res) => {
 })
 
 app.post('/pet', (req, res) => {
-  console.log(req.body)
+  console.log("POST /pet", req.body)
   let new_pet = req.body
   global_database.pets[new_pet.id] = new_pet
   res.send(new_pet)
 })
 
 app.get('/pet/findByStatus', (req, res) => {
-  console.log(req.body)
+  console.log("GET findByStatus", req.body)
   let status = req.query.status
   let matching_pets = []
   for (let pet_id in global_database.pets) {
@@ -41,9 +41,8 @@ app.get('/pet/findByStatus', (req, res) => {
 })
 
 app.get('/pet/findByTags', (req, res) => {
-  console.log(req.body)
+  console.log("GET findByTags", req.body)
   let tags = req.query.tags
-  console.log("TAGS", tags)
   let matching_pets = []
   for (let pet_id in global_database.pets) {
     let match = false;
